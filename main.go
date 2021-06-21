@@ -1,7 +1,7 @@
 package main
 
 import (
-	"io"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -10,7 +10,7 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "Hello, New world!\n")
+	fmt.Fprintf(w, "token:Hello, New world!")
 }
 
 // Initiate web server
