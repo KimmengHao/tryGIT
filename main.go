@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func Authorize(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "token:Hello, New world!")
 }
 
@@ -19,6 +19,6 @@ func main() {
 	headers := handlers.AllowedOrigins([]string{"X-Requested-With", "Content-Type", "Authorization"})
 	methods := handlers.AllowedOrigins([]string{"GET", "POST", "DELETE", "PUT"})
 	origins := handlers.AllowedOrigins([]string{"*"})
-	router.HandleFunc("/auth", handler)
+	router.HandleFunc("/auth", Authorize)
 	log.Fatal(http.ListenAndServe(":9090", handlers.CORS(headers, methods, origins)(router)))
 }
